@@ -1,4 +1,5 @@
 let pw = "BIA375!"
+let userName = "Marge"
 
 Button2.onclick=function(){
     // best - accounts for time zones
@@ -6,7 +7,7 @@ Button2.onclick=function(){
     let date = now.getFullYear()+ '-' + (now.getMonth()+1)+'-'+now.getDate()
     let time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds()
     let dateTime = date + ' ' + time
-    lblMessage.textContent = messageHello
+    lblMessage.textContent = `${userName} ${messageHello}`
     lblMessage.textContent = `The second method datetime is: ${dateTime}`
     
     let query = "INSERT INTO demodatetime (start) VALUES ('" + dateTime + "')"
@@ -14,9 +15,9 @@ Button2.onclick=function(){
 
     if (req.status == 200) { //transit worked.
         if (req.responseText == 500)    // means the insert succeeded
-            lblMessage2.textContent = "You have successfully added the data!"
+            lblMessage2.textContent = `${userName}, you have successfully added the data!`
         else
-            lblMessage2.textContent = "There was a problem with adding the data to the database."
+            lblMessage2.textContent = `${userName},there was a problem with adding the data to the database.`
     } else {
         // transit error
         lblMessage3.textContent = "Error: " + req.status
